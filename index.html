@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sabiha Alam Chowdhury — Researcher</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=IM+Fell+English:ital@1&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --bg:        #f5f1eb;
-      --bg2:       #ede8e0;
-      --bg3:       #e5dfd5;
-      --paper:     #faf7f3;
-      --ink:       #1a1208;
-      --ink2:      #3d3124;
-      --ink3:      #6b5e4e;
-      --rule:      rgba(90,78,60,0.15);
-      --sage:      #3d6b44;
+      --bg: #f5f1eb;
+      --bg2: #ede8e0;
+      --bg3: #e5dfd5;
+      --paper: #faf7f3;
+      --ink: #1a1208;
+      --ink2: #3d3124;
+      --ink3: #6b5e4e;
+      --rule: rgba(90, 78, 60, 0.15);
+      --sage: #3d6b44;
       --sage-pale: #cfe0d1;
-      --dusty:     #2f5a7a;
-      --dusty-pale:#cddae8;
-      --rose:      #8c3a30;
+      --dusty: #2f5a7a;
+      --dusty-pale: #cddae8;
+      --rose: #8c3a30;
       --rose-pale: #e8ccc9;
-      --gold:      #7a6020;
+      --gold: #7a6020;
       --gold-pale: #e4d8b0;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--bg);
@@ -42,15 +53,19 @@
     /* subtle paper grain */
     body::after {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999;
+      pointer-events: none;
+      z-index: 9999;
     }
 
     /* ── SIDEBAR NAV ── */
     .sidebar {
       position: fixed;
-      left: 0; top: 0; bottom: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 220px;
       background: var(--paper);
       border-right: 1px solid var(--rule);
@@ -59,6 +74,7 @@
       padding: 3rem 2rem;
       z-index: 100;
     }
+
     .sidebar-monogram {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 2.6rem;
@@ -67,6 +83,7 @@
       line-height: 1;
       margin-bottom: 0.3rem;
     }
+
     .sidebar-title {
       font-size: 0.65rem;
       letter-spacing: 0.22em;
@@ -76,12 +93,14 @@
       padding-bottom: 2rem;
       border-bottom: 1px solid var(--rule);
     }
+
     .sidebar-nav {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
     }
+
     .sidebar-nav a {
       display: flex;
       align-items: center;
@@ -95,15 +114,26 @@
       border-radius: 4px;
       transition: all 0.25s;
     }
+
     .sidebar-nav a::before {
       content: '';
-      width: 18px; height: 1px;
+      width: 18px;
+      height: 1px;
       background: var(--ink3);
       transition: all 0.25s;
       flex-shrink: 0;
     }
-    .sidebar-nav a:hover { color: var(--ink); background: var(--bg2); }
-    .sidebar-nav a:hover::before { background: var(--sage); width: 24px; }
+
+    .sidebar-nav a:hover {
+      color: var(--ink);
+      background: var(--bg2);
+    }
+
+    .sidebar-nav a:hover::before {
+      background: var(--sage);
+      width: 24px;
+    }
+
     .sidebar-footer {
       margin-top: auto;
       font-size: 0.6rem;
@@ -111,16 +141,23 @@
       color: var(--ink3);
       line-height: 1.8;
     }
+
     .sidebar-footer a {
       color: var(--ink3);
       text-decoration: none;
       display: block;
       transition: color 0.2s;
     }
-    .sidebar-footer a:hover { color: var(--sage); }
+
+    .sidebar-footer a:hover {
+      color: var(--sage);
+    }
 
     /* ── MAIN ── */
-    main { margin-left: 220px; min-height: 100vh; }
+    main {
+      margin-left: 220px;
+      min-height: 100vh;
+    }
 
     /* ── HERO — compact top banner ── */
     #hero {
@@ -135,41 +172,68 @@
 
     /* left: photo column */
     .hero-right {
-      order: -1;                    /* photo comes FIRST / left */
+      order: -1;
+      /* photo comes FIRST / left */
       background: var(--bg3);
       position: relative;
       overflow: hidden;
     }
+
     .hero-right::before {
       content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        0deg, transparent, transparent 39px,
-        rgba(90,78,60,0.055) 39px, rgba(90,78,60,0.055) 40px
-      );
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 39px,
+          rgba(90, 78, 60, 0.055) 39px, rgba(90, 78, 60, 0.055) 40px);
       z-index: 0;
     }
+
     .hero-photo-wrap {
-      position: relative; z-index: 1;
-      width: 100%; height: 100%;
-      display: flex; align-items: stretch;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: stretch;
     }
+
     .hero-photo {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: top center;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
       display: block;
     }
+
     .photo-placeholder {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 0.8rem; color: var(--ink3);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      color: var(--ink3);
       cursor: pointer;
       background: var(--bg3);
     }
-    .photo-placeholder svg { opacity: 0.35; }
-    .photo-placeholder p { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; }
-    .hero-photo-caption { display: none; }   /* hidden in compact layout */
+
+    .photo-placeholder svg {
+      opacity: 0.35;
+    }
+
+    .photo-placeholder p {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+
+    .hero-photo-caption {
+      display: none;
+    }
+
+    /* hidden in compact layout */
 
     /* right: text column */
     .hero-left {
@@ -180,17 +244,20 @@
       position: relative;
       background: var(--paper);
     }
+
     .deco-letter {
       position: absolute;
       font-family: 'Playfair Display', serif;
       font-size: 20rem;
       font-weight: 700;
-      color: rgba(90,78,60,0.03);
-      right: -2rem; bottom: -3rem;
+      color: rgba(90, 78, 60, 0.03);
+      right: -2rem;
+      bottom: -3rem;
       line-height: 1;
       pointer-events: none;
       user-select: none;
     }
+
     .hero-eyebrow {
       font-size: 0.62rem;
       letter-spacing: 0.28em;
@@ -202,7 +269,14 @@
       gap: 0.8rem;
       animation: fadeLeft 0.9s ease both;
     }
-    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--sage); }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--sage);
+    }
+
     .hero-name {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(2.2rem, 3.5vw, 3.4rem);
@@ -212,7 +286,13 @@
       margin-bottom: 0.9rem;
       animation: fadeLeft 0.9s 0.1s ease both;
     }
-    .hero-name em { font-style: italic; color: var(--rose); display: block; }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--rose);
+      display: block;
+    }
+
     .hero-bio {
       font-size: 0.92rem;
       color: var(--ink2);
@@ -221,11 +301,15 @@
       margin-bottom: 1.4rem;
       animation: fadeLeft 0.9s 0.2s ease both;
     }
+
     .hero-tags {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       margin-bottom: 1.6rem;
       animation: fadeLeft 0.9s 0.3s ease both;
     }
+
     .tag {
       font-size: 0.6rem;
       letter-spacing: 0.1em;
@@ -234,90 +318,304 @@
       border-radius: 2px;
       font-weight: 700;
     }
-    .tag-sage  { background: var(--sage-pale);  color: #2e6b35; }
-    .tag-dusty { background: var(--dusty-pale); color: #2f5070; }
-    .tag-rose  { background: var(--rose-pale);  color: #8c3a30; }
-    .tag-gold  { background: var(--gold-pale);  color: #6b5515; }
-    .hero-actions { display: flex; gap: 1rem; animation: fadeLeft 0.9s 0.4s ease both; }
-    .btn {
-      font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 0.7rem 1.6rem; border-radius: 2px; text-decoration: none;
-      font-weight: 700; transition: all 0.3s; cursor: pointer; border: 1px solid transparent;
+
+    .tag-sage {
+      background: var(--sage-pale);
+      color: #2e6b35;
     }
-    .btn-sage { background: var(--sage); color: #fff; border-color: var(--sage); }
-    .btn-sage:hover { background: #3d6b44; border-color: #3d6b44; }
-    .btn-outline { background: transparent; border-color: var(--ink2); color: var(--ink2); }
-    .btn-outline:hover { border-color: var(--ink); color: var(--ink); background: rgba(44,36,22,0.05); }
+
+    .tag-dusty {
+      background: var(--dusty-pale);
+      color: #2f5070;
+    }
+
+    .tag-rose {
+      background: var(--rose-pale);
+      color: #8c3a30;
+    }
+
+    .tag-gold {
+      background: var(--gold-pale);
+      color: #6b5515;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      animation: fadeLeft 0.9s 0.4s ease both;
+    }
+
+    .btn {
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-sage {
+      background: var(--sage);
+      color: #fff;
+      border-color: var(--sage);
+    }
+
+    .btn-sage:hover {
+      background: #3d6b44;
+      border-color: #3d6b44;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--ink2);
+      color: var(--ink2);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: rgba(44, 36, 22, 0.05);
+    }
 
     /* ── SECTIONS ── */
-    .section { padding: 6rem 5rem; position: relative; }
-    .section:nth-child(even) { background: var(--paper); }
-    .section:nth-child(odd)  { background: var(--bg); }
+    .section {
+      padding: 6rem 5rem;
+      position: relative;
+    }
+
+    .section:nth-child(even) {
+      background: var(--paper);
+    }
+
+    .section:nth-child(odd) {
+      background: var(--bg);
+    }
+
     .section-header {
-      display: grid; grid-template-columns: 1fr auto;
-      align-items: end; margin-bottom: 4rem;
-      padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      margin-bottom: 4rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
     }
+
     .section-number {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: 0.75rem; color: var(--ink3); letter-spacing: 0.1em;
-      margin-bottom: 0.5rem; display: block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.75rem;
+      color: var(--ink3);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      display: block;
     }
+
     .section-title {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 500; color: var(--ink); line-height: 1.1;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.1;
     }
-    .section-title em { font-style: italic; color: var(--rose); }
-    .section-year { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .section-year {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
 
     /* ── EDUCATION ── */
-    .edu-items { display: grid; gap: 2.5rem; }
+    .edu-items {
+      display: grid;
+      gap: 2.5rem;
+    }
+
     .edu-item {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 0 2.5rem; padding-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 2.5rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--rule);
     }
-    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .edu-year-col { display: flex; flex-direction: column; align-items: flex-end; padding-top: 0.2rem; }
-    .edu-year { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 500; color: var(--ink3); line-height: 1; }
-    .edu-year-end { font-size: 0.65rem; color: var(--ink3); letter-spacing: 0.08em; }
-    .edu-institution { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; margin-bottom: 0.3rem; }
-    .edu-degree { font-style: italic; color: var(--ink2); font-size: 0.95rem; margin-bottom: 0.5rem; }
-    .edu-honors {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--gold); background: var(--gold-pale);
-      padding: 0.3rem 0.8rem; border-radius: 2px; margin-top: 0.5rem;
+
+    .edu-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
     }
-    .edu-honors::before { content: '✦'; }
-    .edu-gpa { margin-top: 0.8rem; display: flex; align-items: baseline; gap: 0.4rem; }
-    .edu-gpa-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--sage); line-height: 1; }
-    .edu-gpa-denom { font-size: 0.8rem; color: var(--ink3); }
+
+    .edu-year-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 0.2rem;
+    }
+
+    .edu-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--ink3);
+      line-height: 1;
+    }
+
+    .edu-year-end {
+      font-size: 0.65rem;
+      color: var(--ink3);
+      letter-spacing: 0.08em;
+    }
+
+    .edu-institution {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-degree {
+      font-style: italic;
+      color: var(--ink2);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-honors {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-pale);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .edu-honors::before {
+      content: '✦';
+    }
+
+    .edu-gpa {
+      margin-top: 0.8rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .edu-gpa-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1;
+    }
+
+    .edu-gpa-denom {
+      font-size: 0.8rem;
+      color: var(--ink3);
+    }
 
     /* ── PUBLICATIONS ── */
-    .pub-items { display: grid; gap: 0; }
+    .pub-items {
+      display: grid;
+      gap: 0;
+    }
+
     .pub-item {
-      display: grid; grid-template-columns: 60px 1fr;
-      gap: 0 2rem; padding: 2.2rem 0;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 0 2rem;
+      padding: 2.2rem 0;
       border-bottom: 1px solid var(--rule);
       transition: background 0.25s, padding 0.25s, margin 0.25s;
     }
-    .pub-item:hover { background: var(--bg2); margin: 0 -5rem; padding: 2.2rem 5rem; }
-    .pub-item:first-child { border-top: 1px solid var(--rule); }
-    .pub-idx { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem; color: var(--ink3); opacity: 0.4; line-height: 1; padding-top: 0.3rem; text-align: right; }
-    .pub-badge {
-      display: inline-block; font-size: 0.58rem; letter-spacing: 0.15em;
-      text-transform: uppercase; padding: 0.25rem 0.65rem;
-      border-radius: 1px; margin-bottom: 0.7rem; font-weight: 700;
+
+    .pub-item:hover {
+      background: var(--bg2);
+      margin: 0 -5rem;
+      padding: 2.2rem 5rem;
     }
-    .badge-pub  { background: var(--sage-pale);  color: var(--sage); }
-    .badge-acc  { background: var(--dusty-pale); color: var(--dusty); }
-    .badge-prep { background: var(--gold-pale);  color: var(--gold); }
-    .pub-title-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 500; line-height: 1.45; color: var(--ink); margin-bottom: 0.6rem; }
-    .pub-authors { font-size: 0.85rem; color: var(--ink2); font-style: italic; margin-bottom: 0.5rem; }
-    .pub-authors strong { font-style: normal; font-weight: 700; color: var(--ink); }
-    .pub-venue-text { font-size: 0.72rem; letter-spacing: 0.06em; color: var(--dusty); text-transform: uppercase; }
+
+    .pub-item:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .pub-idx {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--ink3);
+      opacity: 0.4;
+      line-height: 1;
+      padding-top: 0.3rem;
+      text-align: right;
+    }
+
+    .pub-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 1px;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+
+    .badge-pub {
+      background: var(--sage-pale);
+      color: var(--sage);
+    }
+
+    .badge-acc {
+      background: var(--dusty-pale);
+      color: var(--dusty);
+    }
+
+    .badge-prep {
+      background: var(--gold-pale);
+      color: var(--gold);
+    }
+
+    .pub-title-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .pub-authors {
+      font-size: 0.85rem;
+      color: var(--ink2);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-authors strong {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .pub-venue-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--dusty);
+      text-transform: uppercase;
+    }
 
     /* ── PROJECTS ── */
     .projects-asymmetric {
@@ -326,114 +624,385 @@
       grid-template-rows: auto auto;
       gap: 1.5rem;
     }
+
     .project-card {
-      background: var(--bg2); border: 1px solid var(--rule);
-      padding: 2.5rem; position: relative; overflow: hidden;
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(44,36,22,0.08); }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(44, 36, 22, 0.08);
+    }
+
     .project-card.featured {
       grid-row: span 2;
       background: var(--bg2);
       color: var(--ink);
       border: 1px solid var(--rule);
     }
-    .project-card.featured .project-icon { color: var(--sage); }
-    .project-card.featured .project-desc { color: var(--ink2); }
-    .project-card.featured .project-title { color: var(--ink); font-weight: 500; }
-    .project-card.featured .proj-tag { background: var(--bg3); color: #3a3028; border: none; }
-    .project-corner { position: absolute; top: 0; right: 0; width: 60px; height: 60px; overflow: hidden; }
+
+    .project-card.featured .project-icon {
+      color: var(--sage);
+    }
+
+    .project-card.featured .project-desc {
+      color: var(--ink2);
+    }
+
+    .project-card.featured .project-title {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .project-card.featured .proj-tag {
+      background: var(--bg3);
+      color: #3a3028;
+      border: none;
+    }
+
+    .project-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+    }
+
     .project-corner::after {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 0; height: 0; border-style: solid;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
       border-width: 0 60px 60px 0;
       border-color: transparent var(--bg) transparent transparent;
     }
-    .project-card.featured .project-corner::after { border-color: transparent var(--bg) transparent transparent; }
-    .project-icon { font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--sage); }
-    .project-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; line-height: 1.3; }
-    .project-desc { font-size: 0.9rem; color: var(--ink2); line-height: 1.8; margin-bottom: 1.2rem; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .proj-tag { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; background: var(--bg3); color: #3a3028; border-radius: 1px; font-weight: 700; }
+
+    .project-card.featured .project-corner::after {
+      border-color: transparent var(--bg) transparent transparent;
+    }
+
+    .project-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: var(--sage);
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--ink2);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .proj-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      background: var(--bg3);
+      color: #3a3028;
+      border-radius: 1px;
+      font-weight: 700;
+    }
 
     /* ── SKILLS ── */
-    .skills-layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--rule); border: 1px solid var(--rule); }
-    .skill-block { background: var(--paper); padding: 2rem 1.8rem; transition: background 0.25s; }
-    .skill-block:hover { background: var(--bg2); }
-    .skill-block-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--sage-pale); }
-    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .skill-list li { font-size: 0.82rem; color: var(--ink2); display: flex; align-items: center; gap: 0.6rem; }
-    .skill-list li::before { content: '·'; color: var(--ink3); font-size: 1.2rem; line-height: 1; }
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .skill-block {
+      background: var(--paper);
+      padding: 2rem 1.8rem;
+      transition: background 0.25s;
+    }
+
+    .skill-block:hover {
+      background: var(--bg2);
+    }
+
+    .skill-block-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--sage-pale);
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skill-list li {
+      font-size: 0.82rem;
+      color: var(--ink2);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-list li::before {
+      content: '·';
+      color: var(--ink3);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
 
     /* ── AWARDS ── */
-    .awards-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
-    .award-item { padding: 2rem; background: var(--bg2); border-top: 3px solid var(--gold); transition: transform 0.25s; }
-    .award-item:hover { transform: translateY(-3px); }
-    .award-emoji { font-size: 1.6rem; margin-bottom: 1rem; }
-    .award-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.4rem; }
-    .award-desc { font-size: 0.85rem; color: var(--ink2); }
+    .awards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .award-item {
+      padding: 2rem;
+      background: var(--bg2);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.25s;
+    }
+
+    .award-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .award-emoji {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .award-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .award-desc {
+      font-size: 0.85rem;
+      color: var(--ink2);
+    }
 
     /* ── CONTACT ── */
-    #contact.section { background: var(--ink); color: var(--bg); }
-    #contact .section-title { color: var(--bg); }
-    #contact .section-title em { color: var(--rose-pale); }
-    #contact .section-number { color: rgba(245,241,235,0.4); }
-    #contact .section-header { border-bottom-color: rgba(245,241,235,0.1); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .contact-intro { font-size: 1.05rem; color: rgba(245,241,235,0.7); line-height: 1.9; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    #contact.section {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    #contact .section-title {
+      color: var(--bg);
+    }
+
+    #contact .section-title em {
+      color: var(--rose-pale);
+    }
+
+    #contact .section-number {
+      color: rgba(245, 241, 235, 0.4);
+    }
+
+    #contact .section-header {
+      border-bottom-color: rgba(245, 241, 235, 0.1);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-intro {
+      font-size: 1.05rem;
+      color: rgba(245, 241, 235, 0.7);
+      line-height: 1.9;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
     .contact-link {
-      display: flex; align-items: center; gap: 1rem;
-      font-size: 0.8rem; letter-spacing: 0.08em;
-      color: rgba(245,241,235,0.7); text-decoration: none;
-      padding: 1rem 1.2rem; border: 1px solid rgba(245,241,235,0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: rgba(245, 241, 235, 0.7);
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(245, 241, 235, 0.1);
       transition: all 0.25s;
     }
-    .contact-link:hover { background: rgba(245,241,235,0.06); color: var(--bg); border-color: rgba(245,241,235,0.25); }
-    .contact-link svg { flex-shrink: 0; opacity: 0.5; }
-    .contact-link:hover svg { opacity: 1; }
-    .contact-link span { opacity: 0.4; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; margin-left: auto; }
+
+    .contact-link:hover {
+      background: rgba(245, 241, 235, 0.06);
+      color: var(--bg);
+      border-color: rgba(245, 241, 235, 0.25);
+    }
+
+    .contact-link svg {
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .contact-link:hover svg {
+      opacity: 1;
+    }
+
+    .contact-link span {
+      opacity: 0.4;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
 
     /* ── FOOTER ── */
     footer {
       margin-left: 220px;
       padding: 1.8rem 5rem;
       background: #1e1912;
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(245,241,235,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 235, 0.3);
     }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeLeft {
-      from { opacity: 0; transform: translateX(-20px); }
-      to   { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .sidebar { display: none; }
-      main { margin-left: 0; }
-      footer { margin-left: 0; }
-      #hero { grid-template-columns: 200px 1fr; max-height: none; min-height: 280px; }
-      .section { padding: 4rem 2rem; }
-      .pub-item:hover { margin: 0; padding: 2.2rem 0; }
-      .skills-layout { grid-template-columns: 1fr 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .projects-asymmetric { grid-template-columns: 1fr; }
-      .project-card.featured { grid-row: span 1; }
+      .sidebar {
+        display: none;
+      }
+
+      main {
+        margin-left: 0;
+      }
+
+      footer {
+        margin-left: 0;
+      }
+
+      #hero {
+        grid-template-columns: 200px 1fr;
+        max-height: none;
+        min-height: 280px;
+      }
+
+      .section {
+        padding: 4rem 2rem;
+      }
+
+      .pub-item:hover {
+        margin: 0;
+        padding: 2.2rem 0;
+      }
+
+      .skills-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .projects-asymmetric {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured {
+        grid-row: span 1;
+      }
     }
+
     @media (max-width: 640px) {
-      #hero { grid-template-columns: 1fr; max-height: none; }
-      .hero-right { min-height: 220px; max-height: 260px; }
-      .hero-left { padding: 2rem 1.5rem; }
-      .skills-layout { grid-template-columns: 1fr; }
-      .awards-row { grid-template-columns: 1fr; }
+      #hero {
+        grid-template-columns: 1fr;
+        max-height: none;
+      }
+
+      .hero-right {
+        min-height: 220px;
+        max-height: 260px;
+      }
+
+      .hero-left {
+        padding: 2rem 1.5rem;
+      }
+
+      .skills-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .awards-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <aside class="sidebar">
@@ -452,7 +1021,7 @@
       <a href="mailto:chowdhurysabiha.alam@gmail.com">✉ Email</a>
       <a href="https://linkedin.com" target="_blank">in LinkedIn</a>
       <a href="https://github.com" target="_blank">⌥ GitHub</a>
-      <br/>
+      <br />
       <span style="opacity:0.5">Dhaka, Bangladesh</span>
     </div>
   </aside>
@@ -492,7 +1061,8 @@
         <div class="hero-photo-wrap">
           <div class="photo-placeholder" id="photo-area">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
             </svg>
             <p>Upload your photo</p>
           </div>
@@ -556,8 +1126,10 @@
           <div class="pub-idx">1</div>
           <div class="pub-body">
             <span class="pub-badge badge-pub">Published</span>
-            <div class="pub-title-text">DeepTransit: Optimizing Urban Package Delivery with Conveyor Network Simulation</div>
-            <div class="pub-authors">M. R. Helal, M. A. Chowdhury, K. Gilman, <strong>Sabiha Alam Chowdhury</strong>, S. Ghimire, M. A. Chowdhury</div>
+            <div class="pub-title-text">DeepTransit: Optimizing Urban Package Delivery with Conveyor Network Simulation
+            </div>
+            <div class="pub-authors">M. R. Helal, M. A. Chowdhury, K. Gilman, <strong>Sabiha Alam Chowdhury</strong>, S.
+              Ghimire, M. A. Chowdhury</div>
             <div class="pub-venue-text">ICCIT 2024, Cox's Bazar · DOI 10.1109/ICCIT64611.2024.11022122</div>
           </div>
         </div>
@@ -565,8 +1137,10 @@
           <div class="pub-idx">2</div>
           <div class="pub-body">
             <span class="pub-badge badge-prep">In Preparation</span>
-            <div class="pub-title-text">Enhancing Indoor Navigation for the Visually Impaired: A Neurosymbolic AI Approach with VQA for Object Recognition and Localization</div>
-            <div class="pub-authors"><strong>Sabiha Alam Chowdhury</strong>, F. T. Prapty, A. Odree, A. Roy, G. R. Alam</div>
+            <div class="pub-title-text">Enhancing Indoor Navigation for the Visually Impaired: A Neurosymbolic AI
+              Approach with VQA for Object Recognition and Localization</div>
+            <div class="pub-authors"><strong>Sabiha Alam Chowdhury</strong>, F. T. Prapty, A. Odree, A. Roy, G. R. Alam
+            </div>
             <div class="pub-venue-text">Manuscript in Preparation · hdl.handle.net/10361/26080</div>
           </div>
         </div>
@@ -575,7 +1149,8 @@
           <div class="pub-body">
             <span class="pub-badge badge-acc">Accepted</span>
             <div class="pub-title-text">Towards Accurate Autism Detection: A Multimodal Machine Learning Approach</div>
-            <div class="pub-authors">M. A. Chowdhury, Md. Al-Hasan, <strong>Sabiha Alam Chowdhury</strong>, M. Hasan</div>
+            <div class="pub-authors">M. A. Chowdhury, Md. Al-Hasan, <strong>Sabiha Alam Chowdhury</strong>, M. Hasan
+            </div>
             <div class="pub-venue-text">IEEE QPAIN 2026 · Interpretable Multimodal Pattern Recognition</div>
           </div>
         </div>
@@ -592,7 +1167,8 @@
           <div class="pub-idx">5</div>
           <div class="pub-body">
             <span class="pub-badge badge-acc">Accepted</span>
-            <div class="pub-title-text">Digital Twins in Healthcare: A Structured Review with Emphasis on Cancer Care and Disease Modeling</div>
+            <div class="pub-title-text">Digital Twins in Healthcare: A Structured Review with Emphasis on Cancer Care
+              and Disease Modeling</div>
             <div class="pub-authors">M. Chowdhury, <strong>Sabiha Alam Chowdhury</strong>, S. C. Omi, M. Hasan</div>
             <div class="pub-venue-text">IEEE QPAIN 2026 · To appear in IEEE Xplore / Scopus</div>
           </div>
@@ -601,7 +1177,8 @@
           <div class="pub-idx">6</div>
           <div class="pub-body">
             <span class="pub-badge badge-prep">In Preparation</span>
-            <div class="pub-title-text">Securing the Mirror World: A Threat Analysis of Digital Twins in Critical Infrastructures</div>
+            <div class="pub-title-text">Securing the Mirror World: A Threat Analysis of Digital Twins in Critical
+              Infrastructures</div>
             <div class="pub-authors"><strong>Sabiha Alam Chowdhury</strong>, M. A. Chowdhury, S. C. Omi, M. Hasan</div>
             <div class="pub-venue-text">Manuscript in Preparation</div>
           </div>
@@ -622,7 +1199,10 @@
           <div class="project-corner"></div>
           <div class="project-icon">🧭</div>
           <div class="project-title">Indoor Scene Detection &amp; Navigation System</div>
-          <div class="project-desc">A flagship multimodal pipeline combining image and text streams for deep indoor scene understanding. Employs Neurosymbolic AI — fusing neural perception with symbolic spatial reasoning via Answer Set Programming — to enable assistive navigation for visually impaired users. Bridges the gap between raw visual data and structured, explainable spatial knowledge.</div>
+          <div class="project-desc">A flagship multimodal pipeline combining image and text streams for deep indoor
+            scene understanding. Employs Neurosymbolic AI — fusing neural perception with symbolic spatial reasoning via
+            Answer Set Programming — to enable assistive navigation for visually impaired users. Bridges the gap between
+            raw visual data and structured, explainable spatial knowledge.</div>
           <div class="proj-tags">
             <span class="proj-tag">Neurosymbolic AI</span>
             <span class="proj-tag">YOLO</span>
@@ -635,7 +1215,8 @@
           <div class="project-corner"></div>
           <div class="project-icon">🚚</div>
           <div class="project-title">DeepTransit: Urban Delivery Simulation</div>
-          <div class="project-desc">Collaborated on a conveyor network simulation to resolve urban logistics bottlenecks. Applied deep learning models for optimised multi-agent package routing.</div>
+          <div class="project-desc">Collaborated on a conveyor network simulation to resolve urban logistics
+            bottlenecks. Applied deep learning models for optimised multi-agent package routing.</div>
           <div class="proj-tags">
             <span class="proj-tag">Deep Learning</span>
             <span class="proj-tag">Discrete Event Sim</span>
@@ -646,7 +1227,8 @@
           <div class="project-corner"></div>
           <div class="project-icon">⚙️</div>
           <div class="project-title">8086 String Manipulation System</div>
-          <div class="project-desc">Low-level system for complex string manipulation with hardware-software interfacing via 8086 Assembly. Demonstrates deep knowledge of memory management and interrupt I/O.</div>
+          <div class="project-desc">Low-level system for complex string manipulation with hardware-software interfacing
+            via 8086 Assembly. Demonstrates deep knowledge of memory management and interrupt I/O.</div>
           <div class="proj-tags">
             <span class="proj-tag">8086 Assembly</span>
             <span class="proj-tag">Systems Programming</span>
@@ -709,14 +1291,6 @@
             <li>Linux · Git / GitHub</li>
           </ul>
         </div>
-        <div class="skill-block" style="border-top: 3px solid var(--gold);">
-          <div class="skill-block-label" style="color:var(--gold);border-bottom-color:var(--gold-pale)">Recognition</div>
-          <ul class="skill-list">
-            <li>Vice Chancellor's List — 2 Semesters</li>
-            <li>Dean's List — 1 Semester</li>
-            <li>ICPC Asia Dhaka Regional 2023</li>
-          </ul>
-        </div>
       </div>
     </section>
 
@@ -732,7 +1306,8 @@
         <div class="award-item">
           <div class="award-emoji">🏅</div>
           <div class="award-name">Vice Chancellor's List</div>
-          <div class="award-desc">Awarded for outstanding academic performance across two semesters at BRAC University.</div>
+          <div class="award-desc">Awarded for outstanding academic performance across two semesters at BRAC University.
+          </div>
         </div>
         <div class="award-item">
           <div class="award-emoji">📋</div>
@@ -742,7 +1317,8 @@
         <div class="award-item">
           <div class="award-emoji">💻</div>
           <div class="award-name">ICPC Asia Dhaka Regional 2023</div>
-          <div class="award-desc">Participant in the prestigious ACM International Collegiate Programming Contest regional round.</div>
+          <div class="award-desc">Participant in the prestigious ACM International Collegiate Programming Contest
+            regional round.</div>
         </div>
       </div>
     </section>
@@ -762,22 +1338,34 @@
         </p>
         <div class="contact-links">
           <a href="mailto:chowdhurysabiha.alam@gmail.com" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
             chowdhurysabiha.alam@gmail.com
             <span>Email</span>
           </a>
           <a href="tel:+8801308310049" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+            </svg>
             (+880) 1308310049
             <span>Phone</span>
           </a>
           <a href="https://linkedin.com" target="_blank" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-3a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-3a2 2 0 100-4 2 2 0 000 4z" />
+            </svg>
             LinkedIn Profile
             <span>Network</span>
           </a>
           <a href="https://github.com" target="_blank" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+            </svg>
             GitHub Profile
             <span>Code</span>
           </a>
@@ -819,4 +1407,5 @@
     });
   </script>
 </body>
+
 </html>
