@@ -1,1420 +1,1178 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sabiha Alam Chowdhury — Researcher</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=IM+Fell+English:ital@1&display=swap"
-    rel="stylesheet" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #f5f1eb;
-      --bg2: #ede8e0;
-      --bg3: #e5dfd5;
-      --paper: #faf7f3;
-      --ink: #1a1208;
-      --ink2: #3d3124;
-      --ink3: #6b5e4e;
-      --rule: rgba(90, 78, 60, 0.15);
-      --sage: #3d6b44;
-      --sage-pale: #cfe0d1;
-      --dusty: #2f5a7a;
-      --dusty-pale: #cddae8;
-      --rose: #8c3a30;
-      --rose-pale: #e8ccc9;
-      --gold: #7a6020;
-      --gold-pale: #e4d8b0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-
-    /* subtle paper grain */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* ── SIDEBAR NAV ── */
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 220px;
-      background: var(--paper);
-      border-right: 1px solid var(--rule);
-      display: flex;
-      flex-direction: column;
-      padding: 3rem 2rem;
-      z-index: 100;
-    }
-
-    .sidebar-monogram {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-
-    .sidebar-title {
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink3);
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .sidebar-nav {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .sidebar-nav a {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink3);
-      text-decoration: none;
-      padding: 0.55rem 0.8rem;
-      border-radius: 4px;
-      transition: all 0.25s;
-    }
-
-    .sidebar-nav a::before {
-      content: '';
-      width: 18px;
-      height: 1px;
-      background: var(--ink3);
-      transition: all 0.25s;
-      flex-shrink: 0;
-    }
-
-    .sidebar-nav a:hover {
-      color: var(--ink);
-      background: var(--bg2);
-    }
-
-    .sidebar-nav a:hover::before {
-      background: var(--sage);
-      width: 24px;
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: var(--ink3);
-      line-height: 1.8;
-    }
-
-    .sidebar-footer a {
-      color: var(--ink3);
-      text-decoration: none;
-      display: block;
-      transition: color 0.2s;
-    }
-
-    .sidebar-footer a:hover {
-      color: var(--sage);
-    }
-
-    /* ── MAIN ── */
-    main {
-      margin-left: 220px;
-      min-height: 100vh;
-    }
-
-    /* ── HERO — compact top banner ── */
-    #hero {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      min-height: 340px;
-      max-height: 380px;
-      border-bottom: 1px solid var(--rule);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* left: photo column */
-    .hero-right {
-      order: -1;
-      /* photo comes FIRST / left */
-      background: var(--bg3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 39px,
-          rgba(90, 78, 60, 0.055) 39px, rgba(90, 78, 60, 0.055) 40px);
-      z-index: 0;
-    }
-
-    .hero-photo-wrap {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: stretch;
-    }
-
-    .hero-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
-
-    .photo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      color: var(--ink3);
-      cursor: pointer;
-      background: var(--bg3);
-    }
-
-    .photo-placeholder svg {
-      opacity: 0.35;
-    }
-
-    .photo-placeholder p {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.55;
-    }
-
-    .hero-photo-caption {
-      display: none;
-    }
-
-    /* hidden in compact layout */
-
-    /* right: text column */
-    .hero-left {
-      padding: 2.8rem 3.5rem 2.8rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      background: var(--paper);
-    }
-
-    .deco-letter {
-      position: absolute;
-      font-family: 'Playfair Display', serif;
-      font-size: 20rem;
-      font-weight: 700;
-      color: rgba(90, 78, 60, 0.03);
-      right: -2rem;
-      bottom: -3rem;
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      animation: fadeLeft 0.9s ease both;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 28px;
-      height: 1px;
-      background: var(--sage);
-    }
-
-    .hero-name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
-      font-weight: 500;
-      line-height: 1.05;
-      color: var(--ink);
-      margin-bottom: 0.9rem;
-      animation: fadeLeft 0.9s 0.1s ease both;
-    }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--rose);
-      display: block;
-    }
-
-    .hero-bio {
-      font-size: 0.92rem;
-      color: var(--ink2);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 1.4rem;
-      animation: fadeLeft 0.9s 0.2s ease both;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.6rem;
-      animation: fadeLeft 0.9s 0.3s ease both;
-    }
-
-    .tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
-      font-weight: 700;
-    }
-
-    .tag-sage {
-      background: var(--sage-pale);
-      color: #2e6b35;
-    }
-
-    .tag-dusty {
-      background: var(--dusty-pale);
-      color: #2f5070;
-    }
-
-    .tag-rose {
-      background: var(--rose-pale);
-      color: #8c3a30;
-    }
-
-    .tag-gold {
-      background: var(--gold-pale);
-      color: #6b5515;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      animation: fadeLeft 0.9s 0.4s ease both;
-    }
-
-    .btn {
-      font-size: 0.66rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 0.7rem 1.6rem;
-      border-radius: 2px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: all 0.3s;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn-sage {
-      background: var(--sage);
-      color: #fff;
-      border-color: var(--sage);
-    }
-
-    .btn-sage:hover {
-      background: #3d6b44;
-      border-color: #3d6b44;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border-color: var(--ink2);
-      color: var(--ink2);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--ink);
-      color: var(--ink);
-      background: rgba(44, 36, 22, 0.05);
-    }
-
-    /* ── SECTIONS ── */
-    .section {
-      padding: 6rem 5rem;
-      position: relative;
-    }
-
-    .section:nth-child(even) {
-      background: var(--paper);
-    }
-
-    .section:nth-child(odd) {
-      background: var(--bg);
-    }
-
-    .section-header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      margin-bottom: 4rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .section-number {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.75rem;
-      color: var(--ink3);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.1;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--rose);
-    }
-
-    .section-year {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink3);
-    }
-
-    /* ── EDUCATION ── */
-    .edu-items {
-      display: grid;
-      gap: 2.5rem;
-    }
-
-    .edu-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 0 2.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .edu-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .edu-year-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding-top: 0.2rem;
-    }
-
-    .edu-year {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 500;
-      color: var(--ink3);
-      line-height: 1;
-    }
-
-    .edu-year-end {
-      font-size: 0.65rem;
-      color: var(--ink3);
-      letter-spacing: 0.08em;
-    }
-
-    .edu-institution {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-
-    .edu-degree {
-      font-style: italic;
-      color: var(--ink2);
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .edu-honors {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: var(--gold-pale);
-      padding: 0.3rem 0.8rem;
-      border-radius: 2px;
-      margin-top: 0.5rem;
-    }
-
-    .edu-honors::before {
-      content: '✦';
-    }
-
-    .edu-gpa {
-      margin-top: 0.8rem;
-      display: flex;
-      align-items: baseline;
-      gap: 0.4rem;
-    }
-
-    .edu-gpa-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--sage);
-      line-height: 1;
-    }
-
-    .edu-gpa-denom {
-      font-size: 0.8rem;
-      color: var(--ink3);
-    }
-
-    /* ── PUBLICATIONS ── */
-    .pub-items {
-      display: grid;
-      gap: 0;
-    }
-
-    .pub-item {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 0 2rem;
-      padding: 2.2rem 0;
-      border-bottom: 1px solid var(--rule);
-      transition: background 0.25s, padding 0.25s, margin 0.25s;
-    }
-
-    .pub-item:hover {
-      background: var(--bg2);
-      margin: 0 -5rem;
-      padding: 2.2rem 5rem;
-    }
-
-    .pub-item:first-child {
-      border-top: 1px solid var(--rule);
-    }
-
-    .pub-idx {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 2rem;
-      color: var(--ink3);
-      opacity: 0.4;
-      line-height: 1;
-      padding-top: 0.3rem;
-      text-align: right;
-    }
-
-    .pub-badge {
-      display: inline-block;
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border-radius: 1px;
-      margin-bottom: 0.7rem;
-      font-weight: 700;
-    }
-
-    .badge-pub {
-      background: var(--sage-pale);
-      color: var(--sage);
-    }
-
-    .badge-acc {
-      background: var(--dusty-pale);
-      color: var(--dusty);
-    }
-
-    .badge-prep {
-      background: var(--gold-pale);
-      color: var(--gold);
-    }
-
-    .pub-title-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 500;
-      line-height: 1.45;
-      color: var(--ink);
-      margin-bottom: 0.6rem;
-    }
-
-    .pub-authors {
-      font-size: 0.85rem;
-      color: var(--ink2);
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-
-    .pub-authors strong {
-      font-style: normal;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .pub-venue-text {
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      color: var(--dusty);
-      text-transform: uppercase;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-asymmetric {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--bg2);
-      border: 1px solid var(--rule);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(44, 36, 22, 0.08);
-    }
-
-    .project-card.featured {
-      grid-row: span 2;
-      background: var(--bg2);
-      color: var(--ink);
-      border: 1px solid var(--rule);
-    }
-
-    .project-card.featured .project-icon {
-      color: var(--sage);
-    }
-
-    .project-card.featured .project-desc {
-      color: var(--ink2);
-    }
-
-    .project-card.featured .project-title {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .project-card.featured .proj-tag {
-      background: var(--bg3);
-      color: #3a3028;
-      border: none;
-    }
-
-    .project-corner {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 60px;
-      height: 60px;
-      overflow: hidden;
-    }
-
-    .project-corner::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 60px 60px 0;
-      border-color: transparent var(--bg) transparent transparent;
-    }
-
-    .project-card.featured .project-corner::after {
-      border-color: transparent var(--bg) transparent transparent;
-    }
-
-    .project-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-      color: var(--sage);
-    }
-
-    .project-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 1rem;
-      line-height: 1.3;
-    }
-
-    .project-desc {
-      font-size: 0.9rem;
-      color: var(--ink2);
-      line-height: 1.8;
-      margin-bottom: 1.2rem;
-    }
-
-    .proj-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .proj-tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      background: var(--bg3);
-      color: #3a3028;
-      border-radius: 1px;
-      font-weight: 700;
-    }
-
-    /* ── SKILLS ── */
-    .skills-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-
-    .skill-block {
-      background: var(--paper);
-      padding: 2rem 1.8rem;
-      transition: background 0.25s;
-    }
-
-    .skill-block:hover {
-      background: var(--bg2);
-    }
-
-    .skill-block-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 2px solid var(--sage-pale);
-    }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .skill-list li {
-      font-size: 0.82rem;
-      color: var(--ink2);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .skill-list li::before {
-      content: '·';
-      color: var(--ink3);
-      font-size: 1.2rem;
-      line-height: 1;
-    }
-
-    /* ── AWARDS ── */
-    .awards-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .award-item {
-      padding: 2rem;
-      background: var(--bg2);
-      border-top: 3px solid var(--gold);
-      transition: transform 0.25s;
-    }
-
-    .award-item:hover {
-      transform: translateY(-3px);
-    }
-
-    .award-emoji {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .award-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-    }
-
-    .award-desc {
-      font-size: 0.85rem;
-      color: var(--ink2);
-    }
-
-    /* ── CONTACT ── */
-    #contact.section {
-      background: var(--ink);
-      color: var(--bg);
-    }
-
-    #contact .section-title {
-      color: var(--bg);
-    }
-
-    #contact .section-title em {
-      color: var(--rose-pale);
-    }
-
-    #contact .section-number {
-      color: rgba(245, 241, 235, 0.4);
-    }
-
-    #contact .section-header {
-      border-bottom-color: rgba(245, 241, 235, 0.1);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .contact-intro {
-      font-size: 1.05rem;
-      color: rgba(245, 241, 235, 0.7);
-      line-height: 1.9;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      color: rgba(245, 241, 235, 0.7);
-      text-decoration: none;
-      padding: 1rem 1.2rem;
-      border: 1px solid rgba(245, 241, 235, 0.1);
-      transition: all 0.25s;
-    }
-
-    .contact-link:hover {
-      background: rgba(245, 241, 235, 0.06);
-      color: var(--bg);
-      border-color: rgba(245, 241, 235, 0.25);
-    }
-
-    .contact-link svg {
-      flex-shrink: 0;
-      opacity: 0.5;
-    }
-
-    .contact-link:hover svg {
-      opacity: 1;
-    }
-
-    .contact-link span {
-      opacity: 0.4;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-left: auto;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-left: 220px;
-      padding: 1.8rem 5rem;
-      background: #1e1912;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(245, 241, 235, 0.3);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .sidebar {
-        display: none;
-      }
-
-      main {
-        margin-left: 0;
-      }
-
-      footer {
-        margin-left: 0;
-      }
-
-      #hero {
-        grid-template-columns: 200px 1fr;
-        max-height: none;
-        min-height: 280px;
-      }
-
-      .section {
-        padding: 4rem 2rem;
-      }
-
-      .pub-item:hover {
-        margin: 0;
-        padding: 2.2rem 0;
-      }
-
-      .skills-layout {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .projects-asymmetric {
-        grid-template-columns: 1fr;
-      }
-
-      .project-card.featured {
-        grid-row: span 1;
-      }
-    }
-
-    @media (max-width: 640px) {
-      #hero {
-        grid-template-columns: 1fr;
-        max-height: none;
-      }
-
-      .hero-right {
-        min-height: 220px;
-        max-height: 260px;
-      }
-
-      .hero-left {
-        padding: 2rem 1.5rem;
-      }
-
-      .skills-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .awards-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabiha Alam Chowdhury - Researcher in Neurosymbolic AI & Computer Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2c5f7e;
+            --accent-teal: #4a9fb8;
+            --accent-coral: #e8927c;
+            --text-dark: #2d3436;
+            --text-medium: #636e72;
+            --background-light: #fafbfc;
+            --background-white: #ffffff;
+            --border-light: #e1e8ed;
+            --shadow-soft: rgba(44, 95, 126, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, rgba(44, 95, 126, 0.02) 1px, transparent 1px),
+                linear-gradient(rgba(44, 95, 126, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            list-style: none;
+            padding: 1.2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Profile */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(250, 251, 252, 1) 100%);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-image-container {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--background-white);
+            box-shadow: 0 10px 40px var(--shadow-soft);
+            background: var(--background-white);
+        }
+
+        /* Placeholder for image - replace with actual img tag */
+        .profile-placeholder {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--primary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            border: 4px solid var(--background-white);
+            box-shadow: 0 10px 40px var(--shadow-soft);
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero .location {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-teal);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero .bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text-medium);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links a {
+            padding: 0.8rem 1.8rem;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        .contact-links a:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 95, 126, 0.2);
+        }
+
+        .contact-links a.primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .contact-links a.primary:hover {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background: var(--background-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-coral);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Research Interests */
+        .interests-list {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--background-white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        .interests-list p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+
+        .interests-list strong {
+            color: var(--primary-blue);
+        }
+
+        /* Publications */
+        .publication-list {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: var(--background-white);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-coral);
+            box-shadow: 0 2px 12px var(--shadow-soft);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .publication-item:nth-child(1) { animation-delay: 0.05s; }
+        .publication-item:nth-child(2) { animation-delay: 0.1s; }
+        .publication-item:nth-child(3) { animation-delay: 0.15s; }
+        .publication-item:nth-child(4) { animation-delay: 0.2s; }
+        .publication-item:nth-child(5) { animation-delay: 0.25s; }
+        .publication-item:nth-child(6) { animation-delay: 0.3s; }
+
+        .publication-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 24px rgba(44, 95, 126, 0.12);
+        }
+
+        .publication-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--accent-teal);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .publication-item .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-blue);
+            line-height: 1.4;
+        }
+
+        .publication-item .authors {
+            color: var(--text-medium);
+            margin-bottom: 0.6rem;
+            font-size: 1.05rem;
+        }
+
+        .publication-item .authors strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .publication-item .venue {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            color: var(--accent-teal);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .publication-item .status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(232, 146, 124, 0.15);
+            color: var(--accent-coral);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+
+        .publication-item .status.published {
+            background: rgba(74, 159, 184, 0.15);
+            color: var(--accent-teal);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--background-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 12px var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(44, 95, 126, 0.15);
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .project-card .project-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-coral);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .project-card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-medium);
+        }
+
+        .project-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-teal) 0%, var(--accent-coral) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-teal);
+            border: 3px solid var(--background-white);
+            box-shadow: 0 0 0 3px var(--accent-teal);
+        }
+
+        .timeline-content {
+            background: var(--background-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--shadow-soft);
+        }
+
+        .timeline-content .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary-blue);
+        }
+
+        .timeline-content .institution {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content .gpa {
+            font-weight: 600;
+            color: var(--accent-coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--background-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--shadow-soft);
+            border-top: 3px solid var(--accent-teal);
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .skill-category li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
+        /* Awards */
+        .awards-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .award-card {
+            background: var(--background-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--shadow-soft);
+            text-align: center;
+            border-bottom: 4px solid var(--accent-coral);
+        }
+
+        .award-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .award-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .award-card p {
+            color: var(--text-medium);
+        }
+
+        /* References */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .reference-card {
+            background: var(--background-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--shadow-soft);
+            border-left: 4px solid var(--accent-teal);
+            transition: all 0.3s ease;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(44, 95, 126, 0.15);
+        }
+
+        .reference-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary-blue);
+        }
+
+        .reference-card .title {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .reference-card .department {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-card .university {
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .reference-card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .reference-card a:hover {
+            color: var(--accent-teal);
+        }
+
+        /* Test Scores */
+        .test-score {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--background-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--shadow-soft);
+            text-align: center;
+            border-top: 4px solid var(--accent-teal);
+        }
+
+        .test-score h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .test-score .score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-coral);
+            margin-bottom: 1rem;
+        }
+
+        .test-score .breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .test-score .breakdown div {
+            text-align: center;
+        }
+
+        .test-score .breakdown .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .test-score .breakdown .value {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--background-white);
+            border-top: 1px solid var(--border-light);
+            color: var(--text-medium);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-teal);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-placeholder {
+                width: 180px;
+                height: 180px;
+                font-size: 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero .location {
+                justify-content: center;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
 
-  <aside class="sidebar">
-    <div class="sidebar-monogram">S·A·C</div>
-    <div class="sidebar-title">Researcher &amp; Engineer</div>
-    <ul class="sidebar-nav">
-      <li><a href="#hero">Profile</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="sidebar-footer">
-      <a href="mailto:chowdhurysabiha.alam@gmail.com">✉ Email</a>
-      <a href="https://linkedin.com" target="_blank">in LinkedIn</a>
-      <a href="https://github.com" target="_blank">⌥ GitHub</a>
-      <br />
-      <span style="opacity:0.5">Dhaka, Bangladesh</span>
-    </div>
-  </aside>
-
-  <main>
-
-    <!-- HERO -->
-    <section id="hero">
-      <div class="hero-left">
-        <div class="deco-letter">S</div>
-        <div class="hero-eyebrow">Researcher · Engineer · Scholar</div>
-        <h1 class="hero-name">
-          Sabiha Alam
-          <em>Chowdhury</em>
-        </h1>
-        <p class="hero-bio">
-          Computer Science graduate from BRAC University specialising in Neurosymbolic AI,
-          multimodal deep learning, and cybersecurity for digital twins. Six peer-reviewed
-          contributions across IEEE venues — driven by a conviction that AI should be
-          interpretable, equitable, and grounded in human needs.
-        </p>
-        <div class="hero-tags">
-          <span class="tag tag-sage">Neurosymbolic AI</span>
-          <span class="tag tag-dusty">Computer Vision</span>
-          <span class="tag tag-rose">Digital Twins</span>
-          <span class="tag tag-gold">Multimodal ML</span>
-          <span class="tag tag-sage">NLP</span>
-          <span class="tag tag-dusty">Intelligent Automation</span>
-        </div>
-        <div class="hero-actions">
-          <a href="#publications" class="btn btn-sage">View Research</a>
-          <a href="#contact" class="btn btn-outline">Get in Touch</a>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="hero-photo-wrap">
-          <div class="photo-placeholder" id="photo-area">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-            <p>Upload your photo</p>
-          </div>
-        </div>
-        <div class="hero-photo-caption">
-          <p>BRAC University</p>
-          <strong>BSc in Computer Science &amp; Engineering</strong>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="section reveal">
-      <div class="section-header">
-        <div>
-          <span class="section-number">i. Academic Background</span>
-          <h2 class="section-title">Education &amp; <em>Honours</em></h2>
-        </div>
-        <span class="section-year">2015 — 2025</span>
-      </div>
-      <div class="edu-items">
-        <div class="edu-item">
-          <div class="edu-year-col"><span class="edu-year">2025</span><span class="edu-year-end">2020 —</span></div>
-          <div class="edu-content">
-            <div class="edu-institution">BRAC University, Dhaka</div>
-            <div class="edu-degree">BSc in Computer Science and Engineering (CSE)</div>
-            <div class="edu-gpa"><span class="edu-gpa-num">3.48</span><span class="edu-gpa-denom">/ 4.0</span></div>
-            <div class="edu-honors">Vice Chancellor's List (2 Semesters) · Dean's List (1 Semester)</div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-year-col"><span class="edu-year">2019</span><span class="edu-year-end">2017 —</span></div>
-          <div class="edu-content">
-            <div class="edu-institution">Cantonment Public School and College</div>
-            <div class="edu-degree">H.S.C — Higher Secondary Certificate</div>
-            <div class="edu-gpa"><span class="edu-gpa-num">5.0</span><span class="edu-gpa-denom">/ 5.0</span></div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-year-col"><span class="edu-year">2017</span><span class="edu-year-end">2015 —</span></div>
-          <div class="edu-content">
-            <div class="edu-institution">Cantonment Public School and College</div>
-            <div class="edu-degree">S.S.C — Secondary School Certificate</div>
-            <div class="edu-gpa"><span class="edu-gpa-num">5.0</span><span class="edu-gpa-denom">/ 5.0</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="section reveal">
-      <div class="section-header">
-        <div>
-          <span class="section-number">ii. Research Output</span>
-          <h2 class="section-title">Publications &amp; <em>Manuscripts</em></h2>
-        </div>
-        <span class="section-year">2024 — ongoing</span>
-      </div>
-      <div class="pub-items">
-        <div class="pub-item">
-          <div class="pub-idx">1</div>
-          <div class="pub-body">
-            <span class="pub-badge badge-pub">Published</span>
-            <div class="pub-title-text">DeepTransit: Optimizing Urban Package Delivery with Conveyor Network Simulation
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="profile-image-container">
+                <!-- Replace this div with your actual image:
+                <img src="path-to-your-photo.jpg" alt="Sabiha Alam Chowdhury" class="profile-image">
+                -->
+                <div class="profile-placeholder">
+                    S
+                </div>
             </div>
-            <div class="pub-authors">M. R. Helal, M. A. Chowdhury, K. Gilman, <strong>Sabiha Alam Chowdhury</strong>, S.
-              Ghimire, M. A. Chowdhury</div>
-            <div class="pub-venue-text">ICCIT 2024, Cox's Bazar · DOI 10.1109/ICCIT64611.2024.11022122</div>
-          </div>
-        </div>
-        <div class="pub-item">
-          <div class="pub-idx">2</div>
-          <div class="pub-body">
-            <span class="pub-badge badge-prep">In Preparation</span>
-            <div class="pub-title-text">Enhancing Indoor Navigation for the Visually Impaired: A Neurosymbolic AI
-              Approach with VQA for Object Recognition and Localization</div>
-            <div class="pub-authors"><strong>Sabiha Alam Chowdhury</strong>, F. T. Prapty, A. Odree, A. Roy, G. R. Alam
+            <div class="profile-text">
+                <h1>Sabiha Alam Chowdhury</h1>
+                <p class="subtitle">Researcher in Neurosymbolic AI & Computer Vision</p>
+                <p class="location">
+                    📍 Dhaka, Bangladesh • 📞 (+880) 1308310049
+                </p>
+                <p class="bio">
+                    Aspiring researcher specializing in Neurosymbolic AI and Multimodal Deep Learning, with a focus on bridging 
+                    symbolic reasoning with neural networks. Passionate about developing intelligent systems that combine computer 
+                    vision and natural language processing to solve real-world challenges in accessibility, healthcare, and cybersecurity.
+                </p>
+                <div class="contact-links">
+                    <a href="/cdn-cgi/l/email-protection#385b50574f5c504d4a414b595a5150591659545955785f55595154165b5755" class="primary">Contact Me</a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                </div>
             </div>
-            <div class="pub-venue-text">Manuscript in Preparation · hdl.handle.net/10361/26080</div>
-          </div>
         </div>
-        <div class="pub-item">
-          <div class="pub-idx">3</div>
-          <div class="pub-body">
-            <span class="pub-badge badge-acc">Accepted</span>
-            <div class="pub-title-text">Towards Accurate Autism Detection: A Multimodal Machine Learning Approach</div>
-            <div class="pub-authors">M. A. Chowdhury, Md. Al-Hasan, <strong>Sabiha Alam Chowdhury</strong>, M. Hasan
+    </section>
+
+    <!-- Research Interests -->
+    <section id="research">
+        <div class="container">
+            <div class="section-header">
+                <h2>Research Interests</h2>
+                <p>Exploring innovative approaches at the intersection of AI, reasoning, and multimodal learning</p>
             </div>
-            <div class="pub-venue-text">IEEE QPAIN 2026 · Interpretable Multimodal Pattern Recognition</div>
-          </div>
+            <div class="interests-list">
+                <p>
+                    My research focuses on <strong>Neurosymbolic AI</strong>, which combines the pattern recognition capabilities of 
+                    neural networks with the explicit reasoning power of symbolic systems. I am particularly interested in 
+                    <strong>Multimodal Deep Learning</strong> that integrates Computer Vision (CV) and Natural Language Processing (NLP) 
+                    to enable machines to understand and interact with the world more naturally.
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    Additionally, I investigate <strong>Cybersecurity in Digital Twins</strong>, exploring how virtual replicas of 
+                    physical systems can be secured against emerging threats, and <strong>Intelligent Automation</strong> systems that 
+                    leverage AI to optimize complex processes in urban logistics, healthcare, and workplace safety.
+                </p>
+            </div>
         </div>
-        <div class="pub-item">
-          <div class="pub-idx">4</div>
-          <div class="pub-body">
-            <span class="pub-badge badge-acc">Accepted</span>
-            <div class="pub-title-text">Toward Safer Workplaces: A Review of Digital Twin-Enabled Safety Training</div>
-            <div class="pub-authors">S. C. Omi, M. A. Chowdhury, <strong>Sabiha Alam Chowdhury</strong>, M. Hasan</div>
-            <div class="pub-venue-text">ICCIT Conference 2025</div>
-          </div>
-        </div>
-        <div class="pub-item">
-          <div class="pub-idx">5</div>
-          <div class="pub-body">
-            <span class="pub-badge badge-acc">Accepted</span>
-            <div class="pub-title-text">Digital Twins in Healthcare: A Structured Review with Emphasis on Cancer Care
-              and Disease Modeling</div>
-            <div class="pub-authors">M. Chowdhury, <strong>Sabiha Alam Chowdhury</strong>, S. C. Omi, M. Hasan</div>
-            <div class="pub-venue-text">IEEE QPAIN 2026 · To appear in IEEE Xplore / Scopus</div>
-          </div>
-        </div>
-        <div class="pub-item">
-          <div class="pub-idx">6</div>
-          <div class="pub-body">
-            <span class="pub-badge badge-prep">In Preparation</span>
-            <div class="pub-title-text">Securing the Mirror World: A Threat Analysis of Digital Twins in Critical
-              Infrastructures</div>
-            <div class="pub-authors"><strong>Sabiha Alam Chowdhury</strong>, M. A. Chowdhury, S. C. Omi, M. Hasan</div>
-            <div class="pub-venue-text">Manuscript in Preparation</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section reveal">
-      <div class="section-header">
-        <div>
-          <span class="section-number">iii. Technical Work</span>
-          <h2 class="section-title">Research <em>Projects</em></h2>
+    <!-- Publications -->
+    <section id="publications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Publications & Research</h2>
+                <p>Peer-reviewed publications and manuscripts in leading conferences and journals</p>
+            </div>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <div class="publication-number">1</div>
+                    <div class="title">DeepTransit: Optimizing Urban Package Delivery with Conveyor Network Simulation</div>
+                    <div class="authors">M. R. Helal, M. A. Chowdhury, K. Gilman, <strong>Sabiha Alam Chowdhury</strong>, S. Ghimire, and M. A. Chowdhury</div>
+                    <div class="venue">2024 27th International Conference on Computer and Information Technology (ICCIT), Cox's Bazar, Bangladesh, 2024, pp. 38–43</div>
+                    <div class="venue">DOI: 10.1109/ICCIT64611.2024.11022122</div>
+                    <span class="status published">Published</span>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-number">2</div>
+                    <div class="title">Enhancing Indoor Navigation for the Visually Impaired: A Neurosymbolic AI Approach with Visual Question Answering for Object Recognition and Localization</div>
+                    <div class="authors"><strong>Sabiha Alam Chowdhury</strong>, F. T. Prapty, A. Odree, A. Roy, and G. R. Alam</div>
+                    <div class="venue">Manuscript in Preparation</div>
+                    <div class="venue">Repository: http://hdl.handle.net/10361/26080</div>
+                    <span class="status">In Preparation</span>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-number">3</div>
+                    <div class="title">Towards Accurate Autism Detection: A Multimodal Machine Learning Approach</div>
+                    <div class="authors">M. A. Chowdhury, Md. Al-Hasan, <strong>Sabiha Alam Chowdhury</strong>, and M. Hasan</div>
+                    <div class="venue">Accepted, IEEE QPAIN 2026</div>
+                    <div class="venue">Focus: Interpretable Multimodal Pattern Recognition</div>
+                    <span class="status">Accepted</span>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-number">4</div>
+                    <div class="title">Toward Safer Workplaces: A Review of Digital Twin-Enabled Safety Training</div>
+                    <div class="authors">S. C. Omi, M. A. Chowdhury, <strong>Sabiha Alam Chowdhury</strong>, M. Hasan</div>
+                    <div class="venue">Accepted in ICCIT Conference 2025</div>
+                    <span class="status">Accepted</span>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-number">5</div>
+                    <div class="title">Digital Twins in Healthcare: A Structured Review with Emphasis on Cancer Care and Disease Modeling</div>
+                    <div class="authors">M. Chowdhury, <strong>Sabiha Alam Chowdhury</strong>, S. C. Omi, and M. Hasan</div>
+                    <div class="venue">Accepted, IEEE QPAIN 2026 (To appear in IEEE Xplore/Scopus)</div>
+                    <span class="status">Accepted</span>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-number">6</div>
+                    <div class="title">Securing the Mirror World: A Threat Analysis of Digital Twins in Critical Infrastructures</div>
+                    <div class="authors"><strong>Sabiha Alam Chowdhury</strong>, M. A. Chowdhury, S. C. Omi, M. Hasan</div>
+                    <div class="venue">Manuscript in Preparation</div>
+                    <span class="status">In Preparation</span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="projects-asymmetric">
-        <div class="project-card featured">
-          <div class="project-corner"></div>
-          <div class="project-icon">🧭</div>
-          <div class="project-title">Indoor Scene Detection &amp; Navigation System</div>
-          <div class="project-desc">A flagship multimodal pipeline combining image and text streams for deep indoor
-            scene understanding. Employs Neurosymbolic AI — fusing neural perception with symbolic spatial reasoning via
-            Answer Set Programming — to enable assistive navigation for visually impaired users. Bridges the gap between
-            raw visual data and structured, explainable spatial knowledge.</div>
-          <div class="proj-tags">
-            <span class="proj-tag">Neurosymbolic AI</span>
-            <span class="proj-tag">YOLO</span>
-            <span class="proj-tag">VQA</span>
-            <span class="proj-tag">ASP / Clingo</span>
-            <span class="proj-tag">Multimodal ML</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-corner"></div>
-          <div class="project-icon">🚚</div>
-          <div class="project-title">DeepTransit: Urban Delivery Simulation</div>
-          <div class="project-desc">Collaborated on a conveyor network simulation to resolve urban logistics
-            bottlenecks. Applied deep learning models for optimised multi-agent package routing.</div>
-          <div class="proj-tags">
-            <span class="proj-tag">Deep Learning</span>
-            <span class="proj-tag">Discrete Event Sim</span>
-            <span class="proj-tag">Multi-Agent</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-corner"></div>
-          <div class="project-icon">⚙️</div>
-          <div class="project-title">8086 String Manipulation System</div>
-          <div class="project-desc">Low-level system for complex string manipulation with hardware-software interfacing
-            via 8086 Assembly. Demonstrates deep knowledge of memory management and interrupt I/O.</div>
-          <div class="proj-tags">
-            <span class="proj-tag">8086 Assembly</span>
-            <span class="proj-tag">Systems Programming</span>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section reveal">
-      <div class="section-header">
-        <div>
-          <span class="section-number">iv. Technical Competencies</span>
-          <h2 class="section-title">Skills &amp; <em>Expertise</em></h2>
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Research & Technical Projects</h2>
+                <p>Hands-on implementations demonstrating expertise in AI and systems</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-type">Multimodal ML</div>
+                    <h3>Indoor Scene Detection & Navigation</h3>
+                    <p>
+                        Developed a sophisticated multimodal pipeline integrating image and text data to enable deep understanding 
+                        of indoor environments for visually impaired navigation.
+                    </p>
+                    <ul>
+                        <li>Engineered neurosymbolic AI strategies combining object recognition with spatial reasoning</li>
+                        <li>Implemented Visual Question Answering (VQA) for context-aware localization</li>
+                        <li>Bridged neural perception with symbolic knowledge representation</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-type">Deep Learning</div>
+                    <h3>DeepTransit: Urban Package Delivery Simulation</h3>
+                    <p>
+                        Collaborated on developing a conveyor network simulation system to optimize urban logistics and address 
+                        delivery bottlenecks using advanced deep learning models.
+                    </p>
+                    <ul>
+                        <li>Applied DL techniques to model complex urban logistics scenarios</li>
+                        <li>Optimized routing and delivery efficiency through simulation</li>
+                        <li>Published findings at ICCIT 2024</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-type">Systems Programming</div>
+                    <h3>8086-Based String Manipulation System</h3>
+                    <p>
+                        Designed and implemented a low-level system for complex string operations, demonstrating proficiency 
+                        in hardware-software interfacing and assembly programming.
+                    </p>
+                    <ul>
+                        <li>Developed efficient string processing algorithms in 8086 Assembly</li>
+                        <li>Optimized memory usage and execution time</li>
+                        <li>Gained deep understanding of computer architecture</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="skills-layout">
-        <div class="skill-block">
-          <div class="skill-block-label">AI &amp; Machine Learning</div>
-          <ul class="skill-list">
-            <li>Neurosymbolic AI</li>
-            <li>Computer Vision — YOLO, Object Detection</li>
-            <li>Deep Learning</li>
-            <li>Visual Question Answering (VQA)</li>
-            <li>Multimodal Machine Learning</li>
-          </ul>
-        </div>
-        <div class="skill-block">
-          <div class="skill-block-label">Logic &amp; Reasoning</div>
-          <ul class="skill-list">
-            <li>Answer Set Programming (ASP / Clingo)</li>
-            <li>Constraint Satisfaction Problems</li>
-            <li>Symbolic Reasoning</li>
-            <li>Knowledge Representation</li>
-          </ul>
-        </div>
-        <div class="skill-block">
-          <div class="skill-block-label">Algorithms &amp; Optimisation</div>
-          <ul class="skill-list">
-            <li>A* Pathfinding &amp; Graph Search</li>
-            <li>Multi-Agent Routing</li>
-            <li>Heuristics &amp; Cost Optimisation</li>
-            <li>Discrete Event Simulation</li>
-          </ul>
-        </div>
-        <div class="skill-block">
-          <div class="skill-block-label">Programming</div>
-          <ul class="skill-list">
-            <li>Python — PyTorch, TensorFlow, OpenCV</li>
-            <li>C++</li>
-            <li>PHP / Laravel · MySQL</li>
-            <li>8086 Assembly · HTML / CSS</li>
-          </ul>
-        </div>
-        <div class="skill-block">
-          <div class="skill-block-label">Research &amp; Tools</div>
-          <ul class="skill-list">
-            <li>LaTeX — IEEE Technical Writing</li>
-            <li>NumPy · Pandas</li>
-            <li>Linux · Git / GitHub</li>
-          </ul>
-        </div>
-        <div class="skill-block" style="border-top: 3px solid var(--gold);">
-          <div class="skill-block-label" style="color:var(--gold);border-bottom-color:var(--gold-pale)">Recognition
-          </div>
-          <ul class="skill-list">
-            <li>Vice Chancellor's List — 2 Semesters</li>
-            <li>Dean's List — 1 Semester</li>
-            <li>ICPC Asia Dhaka Regional 2023</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
-    <!-- AWARDS -->
-    <section id="awards" class="section reveal">
-      <div class="section-header">
-        <div>
-          <span class="section-number">v. Honours &amp; Activities</span>
-          <h2 class="section-title">Awards &amp; <em>Recognition</em></h2>
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>Academic background and achievements</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">May 2020 – March 2025</div>
+                        <h3>BSc in Computer Science and Engineering</h3>
+                        <div class="institution">BRAC University, Dhaka, Bangladesh</div>
+                        <p class="gpa">CGPA: 3.48/4.0</p>
+                        <p>
+                            <strong>Honors:</strong> Vice Chancellor's List (2 Semesters), Dean's List (1 Semester)
+                        </p>
+                        <p>
+                            Comprehensive study of computer science fundamentals including algorithms, data structures, 
+                            artificial intelligence, machine learning, computer vision, and software engineering. Active 
+                            participant in research projects spanning neurosymbolic AI, multimodal learning, and digital twin technologies.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">September 2017 – May 2019</div>
+                        <h3>Higher Secondary Certificate (H.S.C)</h3>
+                        <div class="institution">Cantonment Public School and College</div>
+                        <p class="gpa">GPA: 5.0/5.0</p>
+                        <p>
+                            Achieved perfect score in Higher Secondary Certificate examination with focus on science and mathematics.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">January 2015 – April 2017</div>
+                        <h3>Secondary School Certificate (S.S.C)</h3>
+                        <div class="institution">Cantonment Public School and College</div>
+                        <p class="gpa">GPA: 5.0/5.0</p>
+                        <p>
+                            Excelled in Secondary School Certificate examination with perfect score, demonstrating strong 
+                            foundation in core subjects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-      </div>
-      <div class="awards-row">
-        <div class="award-item">
-          <div class="award-emoji">🏅</div>
-          <div class="award-name">Vice Chancellor's List</div>
-          <div class="award-desc">Awarded for outstanding academic performance across two semesters at BRAC University.
-          </div>
-        </div>
-        <div class="award-item">
-          <div class="award-emoji">📋</div>
-          <div class="award-name">Dean's List</div>
-          <div class="award-desc">Recognised for exceptional academic achievement during undergraduate studies.</div>
-        </div>
-        <div class="award-item">
-          <div class="award-emoji">💻</div>
-          <div class="award-name">ICPC Asia Dhaka Regional 2023</div>
-          <div class="award-desc">Participant in the prestigious ACM International Collegiate Programming Contest
-            regional round.</div>
-        </div>
-      </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section reveal">
-      <div class="section-header">
-        <div>
-          <span class="section-number">vi. Connect</span>
-          <h2 class="section-title">Get in <em>Touch</em></h2>
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills & Expertise</h2>
+                <p>Comprehensive technical proficiency across AI, systems, and research methodologies</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Artificial Intelligence & ML</h3>
+                    <ul>
+                        <li>Neurosymbolic AI (Neural-Symbolic Integration)</li>
+                        <li>Computer Vision (YOLO, Real-time Object Detection/Localization)</li>
+                        <li>Deep Learning Architectures</li>
+                        <li>Visual Question Answering (VQA)</li>
+                        <li>Multimodal Learning</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Logic & Knowledge Representation</h3>
+                    <ul>
+                        <li>Answer Set Programming (ASP/Clingo)</li>
+                        <li>Constraint Satisfaction Problems (CSP)</li>
+                        <li>Symbolic Reasoning</li>
+                        <li>Knowledge Graphs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Algorithms & Optimization</h3>
+                    <ul>
+                        <li>Graph Search Algorithms (A* Pathfinding)</li>
+                        <li>Multi-Agent Routing</li>
+                        <li>Heuristics & Cost Function Optimization</li>
+                        <li>Node-based Traversal</li>
+                        <li>Discrete Event Simulation (DES)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Frameworks</h3>
+                    <ul>
+                        <li>Python (PyTorch, TensorFlow, OpenCV, Scikit-learn)</li>
+                        <li>C++ Programming</li>
+                        <li>PHP & Laravel Framework</li>
+                        <li>MySQL Database Management</li>
+                        <li>8086 Assembly Language</li>
+                        <li>HTML/CSS Web Development</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Systems & Research Tools</h3>
+                    <ul>
+                        <li>LaTeX for Academic Writing</li>
+                        <li>Technical Writing (IEEE Standards)</li>
+                        <li>NumPy & Pandas for Data Analysis</li>
+                        <li>Linux Operating System</li>
+                        <li>Git/GitHub Version Control</li>
+                        <li>Literature Review & Research Methodology</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Domain Expertise</h3>
+                    <ul>
+                        <li>Digital Twin Technologies</li>
+                        <li>Cybersecurity in Critical Infrastructure</li>
+                        <li>Accessibility Technologies</li>
+                        <li>Healthcare AI Applications</li>
+                        <li>Urban Logistics Optimization</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="contact-grid">
-        <p class="contact-intro">
-          Interested in research collaboration, graduate opportunities, or a conversation about
-          the frontiers of AI and intelligent systems? I'd be glad to hear from you.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:chowdhurysabiha.alam@gmail.com" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            chowdhurysabiha.alam@gmail.com
-            <span>Email</span>
-          </a>
-          <a href="tel:+8801308310049" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            (+880) 1308310049
-            <span>Phone</span>
-          </a>
-          <a href="https://linkedin.com" target="_blank" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-3a2 2 0 100-4 2 2 0 000 4z" />
-            </svg>
-            LinkedIn Profile
-            <span>Network</span>
-          </a>
-          <a href="https://github.com" target="_blank" class="contact-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-            </svg>
-            GitHub Profile
-            <span>Code</span>
-          </a>
-        </div>
-      </div>
     </section>
 
-  </main>
+    <!-- Awards -->
+    <section id="awards">
+        <div class="container">
+            <div class="section-header">
+                <h2>Awards & Activities</h2>
+                <p>Recognition and competitive participation</p>
+            </div>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="icon">🏆</div>
+                    <h3>Vice Chancellor's List</h3>
+                    <p>Recognized for outstanding academic performance across 2 semesters at BRAC University</p>
+                </div>
+                <div class="award-card">
+                    <div class="icon">⭐</div>
+                    <h3>Dean's List</h3>
+                    <p>Honored for exceptional academic achievement in semester at BRAC University</p>
+                </div>
+                <div class="award-card">
+                    <div class="icon">💻</div>
+                    <h3>ICPC Asia Dhaka Regional</h3>
+                    <p>Participant in the prestigious International Collegiate Programming Contest 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <span>© 2025 Sabiha Alam Chowdhury</span>
-    <span>Dhaka, Bangladesh</span>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Sabiha Alam Chowdhury. All rights reserved.</p>
+        <p>Last Updated: March 2025 | Seeking PhD Opportunities in AI & Computer Science</p>
+        <p><a href="/cdn-cgi/l/email-protection#f4979c9b83909c81868d8795969d9c95da95989599b49399959d98da979b99"><span class="__cf_email__" data-cfemail="fd9e95928a9995888f848e9c9f94959cd39c919c90bd9a909c9491d39e9290">[email&#160;protected]</span></a></p>
+    </footer>
 
-  <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
-    reveals.forEach(el => io.observe(el));
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-    // Click-to-upload photo (works locally in browser)
-    const area = document.getElementById('photo-area');
-    area.style.cursor = 'pointer';
-    area.title = 'Click to upload your photo';
-    area.addEventListener('click', () => {
-      const inp = document.createElement('input');
-      inp.type = 'file'; inp.accept = 'image/*';
-      inp.onchange = e => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const url = URL.createObjectURL(file);
-        area.innerHTML = `<img src="${url}" class="hero-photo" alt="Sabiha Alam Chowdhury"/>`;
-      };
-      inp.click();
-    });
-  </script>
-</body>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-</html>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with initial hidden state
+        document.querySelectorAll('.project-card, .timeline-item, .skill-category, .award-card, .reference-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Active navigation highlight
